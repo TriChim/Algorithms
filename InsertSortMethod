@@ -39,8 +39,9 @@ public class InsertSortMethod {
         
         }
     }
-    public static void print(int arr[], int n){
-        for(int i = 0; i < n; i++){
+    public static void print(int arr[]){
+        int arrSize = unSortedArr.length;
+        for(int i = 0; i < arrSize; i++){
             System.out.println(arr[i] + " ");
         }
     }
