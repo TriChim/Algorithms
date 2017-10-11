@@ -1,0 +1,39 @@
+public class SelectionSort{
+    public static void main(String args[]) {
+        
+        //Assume input is are not sorted
+        int[] array = {5, 9, 1, -3, 6, -1, 0};
+        
+        selectionSort(array);
+        print(array);
+    }
+    
+    //Make a value as the minimum value
+    //Take the next value and check that against the minimum value
+    //If smaller than make that the minimum value and continue until all value is checked at the first index
+    //Next move to the second index and make the minimum value and only check all the value after second index
+    //Do this until n-1 as you do not need to do the comparison for the last index
+    
+    //Both worst and best case time complexity is O(n^2) as you will need to go through the entire array
+    
+    public static void selectionSort(int[] array){
+        int arraySize = array.length;
+        for(int i = 0; i < (arraySize-1); i++){
+            int min = i;
+            for(int j = i +1; j < arraySize; j++){
+                if(array[j] < array[min]){
+                    int temp = array[min];
+                    array[min] = array[j];
+                    array[j] = temp;
+                }
+            }
+        }
+    }
+    
+    public static void print(int[] array){
+        int n = array.length;
+        for(int i = 0; i < n; i++){
+            System.out.println(array[i]);
+        }
+    }
+}
