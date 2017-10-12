@@ -1,0 +1,74 @@
+public class MergeSort {
+    public static void main(String args[]) {
+        int[] array = {5, 9, 1, -3, 6, -1, 0};
+        
+        mergeSort(array);
+        print(array);
+        
+    }
+    
+    //Assume both left and right are already sorted
+    public static void merge(int[] left, int[] right, int[] array){
+        int leftIndex = 0;
+        int rightIndex = 0;
+        int arrayIndex = 0;
+        
+        //Compare the smallest between the left array and the right array to place in the array until one side is empty
+        while(leftIndex < left.length && rightIndex < right.length){
+            if(left[leftIndex] < right[rightIndex]){
+                array[arrayIndex] = left[leftIndex];
+                leftIndex++;
+                arrayIndex++;
+            }
+            else{
+                array[arrayIndex] = right[rightIndex];
+                rightIndex++;
+                arrayIndex++;
+            }
+        }
+        
+        //Fill the rest of the array with whichever one is not empty
+        while(leftIndex < left.length){
+            array[arrayIndex] = left[leftIndex];
+            leftIndex++;
+            arrayIndex++;
+        }
+        while(rightIndex < right.length){
+            array[arrayIndex] = right[rightIndex];
+            rightIndex++;
+            arrayIndex++;
+        }
+    }
+    
+    public static void mergeSort(int[] array){
+        if(array.length == 1){
+            return;
+        }
+        int high = array.length;
+        int middle = (high/2);
+        int highMid = high - middle;
+        int[] left = new int[middle];
+        int[] right = new int[highMid];
+        
+        for(int i = 0; i < high; i++){
+            if(i < middle){
+                left[i] = array[i];
+            }
+            else{
+                right[i - middle] = array[i];
+            }
+        }
+        
+        mergeSort(left);
+        mergeSort(right);
+        merge(left, right, array);
+        
+    }
+    
+    public static void print(int arr[]){
+        int arrSize = arr.length;
+        for(int i = 0; i < arrSize; i++){
+            System.out.println(arr[i] + " ");
+        }
+    }
+}
